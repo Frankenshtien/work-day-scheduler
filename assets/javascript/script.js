@@ -11,19 +11,6 @@ setInterval(function() {
   }, 1000);
 
 
-// $(".saveBtn").on("click", function() {
-//     var text = $(this).parent().children(".description").val().trim();
-//     var descriptionDiv = $("<div>").addClass("col-10 description past").text(text);
-//     var rowTime = $(this).parent().attr("id");
-//     savedTimes.push(rowTime);
-//     savedEvent.push(text)
-//     console.log(savedTimes);
-//     console.log(savedEvent)
-//     $(this).parent().children(".description").replaceWith(descriptionDiv);
-
-//     localStorage.setItem(rowTime, JSON.stringify($(this).parent().children(".description").text()))
-// });
-
 $(".description").on("click", function() {
     var text = $(this).text().trim();
     var textInput = $("<textarea>").addClass("col-10 description past").val(text);
@@ -39,10 +26,10 @@ $(".description").on("click", function() {
 
     $(".saveBtn").on("click", function() {
         var eventTime = $(this).parent(".row").attr("id")
-        //var eventDescription = ($(this).parent().children(".description").text());
+        var eventDescription = JSON.stringify($(eventTime).children(".description").text());
         console.log(eventTime);
         console.log(eventDescription);
-        //localStorage.setItem(eventTime, eventDescription)
+        localStorage.setItem(eventTime, eventDescription)
     })
 });
 
